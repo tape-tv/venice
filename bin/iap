@@ -36,16 +36,16 @@ command :verify do |c|
     client.shared_secret = options.secret if options.secret
 
     begin
-      receipt = client.verify!(File.read(file))
+      puts client.verify!(File.read(file))
 
-      table = Terminal::Table.new :title => "Receipt" do |t|
-        hash = receipt.to_h
-        hash.keys.sort.each do |key|
-          t << [key, hash[key]]
-        end
-      end
+      # table = Terminal::Table.new :title => "Receipt" do |t|
+      #   hash = receipt.to_h
+      #   hash.keys.sort.each do |key|
+      #     t << [key, hash[key]]
+      #   end
+      # end
 
-      puts table
+      # puts table
 
     rescue => error
       say_error error.message and abort
